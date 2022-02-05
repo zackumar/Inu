@@ -4,8 +4,8 @@
 #include <Adafruit_PWMServoDriver.h>
 #include <Wire.h>
 
-#define SERVOMIN 150
-#define SERVOMAX 600
+#define SERVOMIN 153
+#define SERVOMAX 557
 #define SERVO_FREQ 50
 
 class ServoController {
@@ -14,7 +14,7 @@ class ServoController {
     long pulse_from_degrees(int degrees);
 
    public:
-    ServoController();
+    void start();
 
     /**
      * @brief Move servo to position in degrees

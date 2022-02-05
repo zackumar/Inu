@@ -3,8 +3,7 @@
 #include <Adafruit_PWMServoDriver.h>
 #include <Wire.h>
 
-ServoController::ServoController() {
-    Serial.println("Servo Controller Started...");
+void ServoController::start() {
     pwm = Adafruit_PWMServoDriver();
     pwm.begin();
     pwm.setPWMFreq(SERVO_FREQ);

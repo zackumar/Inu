@@ -1,13 +1,22 @@
 #ifndef KINEMATICS_H
 #define KINEMATICS_H
 
-/**
- * @brief Calculate the inverse kinematics of single leg
- *
- * @param leg_angles
- * @param leg_coordinates
- * @return Pointer of leg angles in degrees
- */
-int* single_leg_ik(int leg_angles[], int leg_coordinates[]);
+#define UPPER_LEG_LENGTH 100
+#define LOWER_LEG_LENGTH 100
+
+#define SHOULDER_ANGLE_OFFSET 45
+#define ELBOW_ANGLE_MAX 170
+
+class Kinematics {
+   public:
+    /**
+     * @brief Calculate the inverse kinematics of single leg
+     *
+     * @param leg_angles Int array to change
+     * @param leg_coordinates Coordinates of end effector
+     * @return Pointer of leg angles in degrees
+     */
+    int* single_leg_ik(int leg_angles[], float leg_coordinates[]);
+};
 
 #endif
