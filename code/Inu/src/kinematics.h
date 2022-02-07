@@ -7,6 +7,8 @@
 #define SHOULDER_ANGLE_OFFSET 45
 #define ELBOW_ANGLE_MAX 170
 
+#define ABDUCTION_LEG_OFFSET 53  // 55
+
 class Kinematics {
    public:
     /**
