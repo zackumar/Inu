@@ -2,7 +2,9 @@
 
 #include <Arduino.h>
 
-int* Kinematics::single_leg_ik(int leg_angles[], float leg_coordinates[]) {
+int* Kinematics::single_leg_ik(int leg_angles[], float leg_coordinates[], float x_off, float y_off, bool on_left = false) {
+    // TODO Implement offsets and inverse
+
     float x = leg_coordinates[0];
     float y = leg_coordinates[1];
     float z = leg_coordinates[2];
@@ -28,10 +30,18 @@ int* Kinematics::single_leg_ik(int leg_angles[], float leg_coordinates[]) {
     float shoulder_angle_z_rad = acos((sq(UPPER_LEG_LENGTH) + sq(z3) - sq(LOWER_LEG_LENGTH)) / (2 * UPPER_LEG_LENGTH * z3));
     float elbow_angle_z_rad = PI - (shoulder_angle_z_rad * 2);
 
-    int shoulder_angle_z_deg = 180 - ((int)(shoulder_angle_z_rad * (180 / PI)) + SHOULDER_ANGLE_OFFSET);
-    int elbow_angle_z_deg = (180 - (int)(elbow_angle_z_rad * (180 / PI)));
+    int shoulder_angle_z_deg = ((int)(shoulder_angle_z_rad * (180 / PI)) + SHOULDER_ANGLE_OFFSET);
+    int elbow_angle_z_deg = (int)(elbow_angle_z_rad * (180 / PI));
 
-    leg_angles[0] = 180 - abd_angle_deg;
-    leg_angles[1] = shoulder_angle_z_deg - shoulder_angle_x_deg;
-    leg_angles[2] = elbow_angle_z_deg;
+    if (on_left) {
+        leg_angles[0] = 180 - abd_angle_deg;
+        leg_angles[1] = 180 - shoulder_angle_z_deg - shoulder_angle_x_deg;
+        leg_angles[2] = 180 - elbow_angle_z_deg;
+    } else {
+        leg_angles[0] = 180 - abd_angle_deg;  // Dont need to inverse because it needs to match other
+        leg_angles[1] = shoulder_angle_z_deg + shoulder_angle_x_deg;
+        leg_angles[2] = elbow_angle_z_deg;  // Inverse
+    }
+
+    return leg_angles;
 }
