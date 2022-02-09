@@ -4,7 +4,8 @@
 #include "kinematics.h"
 #include "servo_controller.h"
 
-int angles[3] = {90, 90, 90};
+int left_angles[3] = {90, 90, 90};
+int right_angles[3] = {90, 90, 90};
 float coords[3] = {0, 0, 0};
 
 ServoController servo = ServoController();
@@ -25,14 +26,6 @@ void setup() {
     Serial.begin(9600);
 
     servo.start();
-    // kinematics.single_leg_ik(angles, coords);
-
-    // Serial.println(angles[0]);
-    // Serial.println(angles[1]);
-    // Serial.println(angles[2]);
-
-    // servo.move_servo(0, 0);
-    // servo.move_servo(2, angles[2]);
 
     Serial.println("Inu Running...");
 }
@@ -56,9 +49,14 @@ void loop() {
     coords[1] = y;
     coords[2] = z;
 
-    kinematics.single_leg_ik(angles, coords);
+    kinematics.single_leg_ik(left_angles, coords, 0, 0, true);
+    kinematics.single_leg_ik(right_angles, coords, 0, 0, false);
 
-    servo.move_servo(0, angles[0]);
-    servo.move_servo(1, angles[1]);
-    servo.move_servo(2, angles[2]);
+    servo.move_servo(0, left_angles[0]);
+    servo.move_servo(1, left_angles[1]);
+    servo.move_servo(2, left_angles[2]);
+
+    servo.move_servo(4, right_angles[0]);
+    servo.move_servo(5, right_angles[1]);
+    servo.move_servo(6, right_angles[2]);
 }
