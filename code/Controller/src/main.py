@@ -53,7 +53,7 @@ def main():
         return
 
     while running:
-        clock.tick()
+        clock.tick(60)
 
         # if arduino.in_waiting:
         #     message = arduino.readline()
@@ -61,10 +61,10 @@ def main():
 
         for event in pygame.event.get():
             if event.type == pygame.JOYAXISMOTION:
-                if event.axis == 0:
+                if event.axis == 1:
                    x = vmap(event.value, -1, 1, x_min, x_max)
                    if(x < 10 and x > -10): x = 0
-                if event.axis == 1:
+                if event.axis == 0:
                     y = vmap(event.value, -1, 1, y_max, y_min)
                     if(y < 10 and y > -10): y = 0
 
