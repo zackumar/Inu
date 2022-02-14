@@ -1,3 +1,9 @@
 *.code-workspace
 *.gcode
 *.3mf
+
+.venv
+
+package*.json
+node_modules
+code/Inu/.vscode/extensions.json
