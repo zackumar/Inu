@@ -60,6 +60,14 @@ def main():
         #     print(message)
 
         for event in pygame.event.get():
+            if event.type == pygame.JOYBUTTONDOWN:
+                if(event.button == 7):
+                    x = 0
+                    y = 0
+                    z = 141
+
+
+
             if event.type == pygame.JOYAXISMOTION:
                 if event.axis == 1:
                    x = vmap(event.value, -1, 1, x_min, x_max)
