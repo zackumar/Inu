@@ -2,9 +2,9 @@
 
 #include "pico/stdlib.h"
 
-int main() {
-    const uint led_pin = 25;
+const uint led_pin = 25;
 
+int main() {
     // Initialize LED pin
     gpio_init(led_pin);
     gpio_set_dir(led_pin, GPIO_OUT);
@@ -15,10 +15,13 @@ int main() {
     // Loop forever
     while (true) {
         // Blink LED
-        printf("Blinking!\r\n");
+        printf("Blinking Pt. 2!\r\n");
         gpio_put(led_pin, true);
         sleep_ms(500);
         gpio_put(led_pin, false);
         sleep_ms(500);
     }
+}
+
+void loop() {
 }
