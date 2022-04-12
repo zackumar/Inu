@@ -16,6 +16,7 @@ pico_sdk_init()
 # Tell CMake where to find the executable source file
 add_executable(${PROJECT_NAME} 
     main.cpp
+    pwm_controller.cpp
 )
 
 # Create map/bin/hex/uf2 files
