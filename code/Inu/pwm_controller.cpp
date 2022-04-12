@@ -1,7 +1,9 @@
-#include "pwm_controller.h"
-
 #include "hardware/i2c.h"
 #include "pico/stdlib.h"
+#include "servo_controller.h"
+
+PWMController::PWMController() {
+}
 
 PWMController::PWMController(i2c_inst_t* i2c, uint SDA, uint SCL, uint8_t i2c_address) {
     _i2c = i2c;

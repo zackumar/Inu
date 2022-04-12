@@ -17,6 +17,7 @@ pico_sdk_init()
 add_executable(${PROJECT_NAME} 
     main.cpp
     pwm_controller.cpp
+    servo_controller.cpp
 )
 
 # Create map/bin/hex/uf2 files

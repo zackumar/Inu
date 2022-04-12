@@ -7,7 +7,8 @@
 
 class PWMController {
    public:
-    PWMController(i2c_inst_t* i2c, uint SDA, uint SCL, uint8_t i2c_address = 0x40);
+    PWMController();
+    PWMController(i2c_inst_t* i2c, uint SDA, uint SCL, uint8_t i2c_address);
     void begin(void);
     void setFreq(uint16_t freq);
     void setPWM(uint8_t channel, int16_t pwm);
