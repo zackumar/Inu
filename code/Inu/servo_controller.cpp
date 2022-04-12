@@ -6,7 +6,7 @@ ServoController::ServoController() {
 }
 
 void ServoController::start() {
-    start(i2c0, 0, 1, 0x40);
+    start(i2c0, 4, 5, 0x40);
 }
 
 void ServoController::start(i2c_inst_t* i2c, uint SDA, uint SCL, uint8_t i2c_address) {
