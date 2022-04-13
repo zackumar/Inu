@@ -9,6 +9,8 @@
 
 #define BODY_WIDTH 95  // mm from center (Half distance from origin to leg origin)
 
+#define PI 3.1415926535897932384626433832795
+
 class Kinematics {
    public:
     /**

@@ -18,6 +18,7 @@ add_executable(${PROJECT_NAME}
     main.cpp
     pwm_controller.cpp
     servo_controller.cpp
+    kinematics.cpp
 )
 
 # Create map/bin/hex/uf2 files

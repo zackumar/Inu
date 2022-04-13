@@ -1,6 +1,7 @@
 #include "kinematics.h"
 
-#include <Arduino.h>
+#include "pico/float.h"
+#include "pico/stdlib.h"
 
 int* Kinematics::singleLegIK(int legAngles[], float legPosition[], float legRotation[], float xOff, float yOff, bool onLeft = false) {
     float abductionLegOffset = 53;
@@ -54,7 +55,7 @@ int* Kinematics::singleLegIK(int legAngles[], float legPosition[], float legRota
     float z3 = z2 / cos(shoulderAngleXRad);
 
     // Z Axis Translation
-    float shoulderAngleZRad = acos((sq(UPPER_LEG_LENGTH) + sq(z3) - sq(LOWER_LEG_LENGTH)) / (2 * UPPER_LEG_LENGTH * z3));
+    float shoulderAngleZRad = acos((powf(UPPER_LEG_LENGTH, 2) + powf(z3, 2) - powf(LOWER_LEG_LENGTH, 2)) / (2 * UPPER_LEG_LENGTH * z3));
     float elbow_angle_z_rad = PI - (shoulderAngleZRad * 2);
 
     int shoulderAngleZDeg = ((int)(shoulderAngleZRad * (180 / PI)) + SHOULDER_ANGLE_OFFSET);
